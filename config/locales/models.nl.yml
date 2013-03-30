@@ -1,0 +1,8 @@
+nl:
+  activerecord:
+    models:
+      story: Verhaal
+    attributes:
+      story:
+        title: Titel
+        description: Verhaal

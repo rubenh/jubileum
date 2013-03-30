@@ -1,0 +1,10 @@
+.row
+  .span8
+    %h2.header= @story.title
+  .span4
+    = link_to "Terug naar overzicht", admin_stories_path, :class => ["btn", "pull-right"]
+%em= "Door: #{@story.name}"
+%p
+  = raw @story.description
+%br
+= image_tag @story.photo

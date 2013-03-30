@@ -1,0 +1,18 @@
+= tinymce
+= simple_form_for(@story, :html => {:class => ["form-horizontal", "story-form"], :id => "story-form"}) do |f|
+  = f.error_notification
+
+  = f.input :name
+  = f.input :title, :hint => "De titel wordt boven het verhaal geplaatst."
+
+  = f.input :description, :input_html => { :id => "tinymce-bla", :class => "tinymce" }, :hint => "Het liefst hebben we dat het verhaal bij de foto past!"
+
+  = f.input :photo, :hint => file_name_with_link(@story.photo, @story.photo.url, :target => '_blank')
+  = f.input :photo_cache, :as => :hidden
+
+  .control-group
+    .controls.actions
+      = f.button :submit, "Verzend"
+
+%p.lead.offset1
+  = t("nr_verhalen", :count => Story.count)

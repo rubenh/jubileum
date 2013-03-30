@@ -1,0 +1,18 @@
+%h2.header Ingestuurde verhalen:
+
+%table.table.table-striped.story_table
+  %thead
+    %tr
+      %th Naam
+      %th Titel
+      %th Verhaal
+      %th Foto
+      %th 
+  %tbody
+    - @stories.each do |story|
+      %tr
+        %td= story.name
+        %td= story.title
+        %td= raw story.description
+        %td= image_tag story.photo.thumb
+        %td= link_to "Bekijk verhaal", admin_story_path(story), :class => ["btn", "pull-right"]
