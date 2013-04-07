@@ -13,6 +13,9 @@
       %tr
         %td= story.name
         %td= story.title
-        %td= raw story.description
-        %td= image_tag story.photo.thumb
+        %td= raw truncate(story.description, :length => 50)
+        - if story.photo.present?
+          %td= image_tag story.photo.thumb
+        - else
+          %td
         %td= link_to "Bekijk verhaal", admin_story_path(story), :class => ["btn", "pull-right"]

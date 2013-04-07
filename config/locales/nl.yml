@@ -119,6 +119,7 @@ nl:
       too_long: is te lang (maximaal %{count} tekens)
       too_short: is te kort (minimaal %{count} tekens)
       wrong_length: heeft onjuiste lengte (moet %{count} tekens lang zijn)
+      extension_white_list_error: "Je mag geen bestanden met het formaat %{extension} uploaden, alleen bestanden met het %{allowed_types} formaat"
     template:
       body: ! 'Controleer de volgende velden:'
       header:

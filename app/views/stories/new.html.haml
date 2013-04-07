@@ -7,9 +7,20 @@
 
   = f.input :description, :input_html => { :id => "tinymce-bla", :class => "tinymce" }, :hint => "Het liefst hebben we dat het verhaal bij de foto past!"
 
-  = f.input :photo, :hint => file_name_with_link(@story.photo, @story.photo.url, :target => '_blank')
-  = f.input :photo_cache, :as => :hidden
 
+  .control-group
+    .controls
+      .fileupload.fileupload-new{"data-provides" => "fileupload"}
+        %span.btn.btn-file
+          %span.fileupload-new Select file
+          %span.fileupload-exists Change
+          = f.file_field :photo
+        %span.fileupload-preview= image_tag @story.photo.thumb if @story.photo.present?
+        %a.close.fileupload-exists{"data-dismiss" => "fileupload", :href => "#", :style => "float: none"} ×
+        - if @story.errors[:photo]
+          .error.control-group
+            %span.help-inline.error= @story.errors[:photo].join(". ")
+        = f.input :photo_cache, :as => :hidden
   .control-group
     .controls.actions
       = f.button :submit, "Verzend"
