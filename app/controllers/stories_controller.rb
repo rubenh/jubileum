@@ -7,7 +7,7 @@ class StoriesController < ApplicationController
   def create
     @story = Story.new(params[:story])
     if @story.save
-      flash[:notice] = "Bedankt voor het verhaal. Het wordt in het boek geplaatst!"
+      flash[:notice] = "Bedankt voor het verhaal. Het wordt in het fotoboek geplaatst!"
       redirect_to root_path
     else
       render :new

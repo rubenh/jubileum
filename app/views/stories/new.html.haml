@@ -1,19 +1,29 @@
+.row
+  .span10.offset1
+    %p.explanation
+      Omdat jullie in de afgelopen 25 jaar een belangrijke rol hebben gespeeld in het leven van Johan en Karin (of een van de twee), willen we jullie vragen om een bijdrage te leveren aan een fotoboek voor ze.
+      Dit fotoboek is een verzameling van leuke herinneringen aan Johan en Karin. 
+      %br
+      Het is de bedoeling dat jullie een foto uitzoeken. Hierbij kunnen jullie een tekst schrijven over de bijbehorende herinnering.
+      Uiteindelijk voegen wij alle foto's en verhalen samen in een fotoboek.
+
 = tinymce
 = simple_form_for(@story, :html => {:class => ["form-horizontal", "story-form"], :id => "story-form"}) do |f|
-  = f.error_notification
+  .row
+    .span10.offset1
+      = f.error_notification
 
   = f.input :name
   = f.input :title, :hint => "De titel wordt boven het verhaal geplaatst."
 
-  = f.input :description, :input_html => { :id => "tinymce-bla", :class => "tinymce" }, :hint => "Het liefst hebben we dat het verhaal bij de foto past!"
+  = f.input :description, :input_html => { :id => "tinymce-bla", :class => "tinymce" }
 
-
-  .control-group
+  .control-group.foto-upload
     .controls
       .fileupload.fileupload-new{"data-provides" => "fileupload"}
         %span.btn.btn-file
-          %span.fileupload-new Select file
-          %span.fileupload-exists Change
+          %span.fileupload-new Selecteer foto
+          %span.fileupload-exists Verander foto
           = f.file_field :photo
         %span.fileupload-preview= image_tag @story.photo.thumb if @story.photo.present?
         %a.close.fileupload-exists{"data-dismiss" => "fileupload", :href => "#", :style => "float: none"} ×
@@ -23,7 +33,10 @@
         = f.input :photo_cache, :as => :hidden
   .control-group
     .controls.actions
-      = f.button :submit, "Verzend"
-
-%p.lead.offset1
-  = t("nr_verhalen", :count => Story.count)
+      .row
+        .span8
+          %p.explanation.verzend-info
+            Klik hierboven op "Selecteer foto" om te zoeken naar de juiste foto op je computer en selecteer deze.
+            %br/
+            Als je uiteindelijk op "Verzend verhaal en foto" drukt, komen de foto en het verhaal vanzelf bij ons terecht.
+      = f.button :submit, "Verzend verhaal en foto"

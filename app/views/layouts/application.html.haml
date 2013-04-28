@@ -10,19 +10,21 @@
   %body
     .container
       .row
-        .span8.offset1
-          %p.lead
+        .span10.offset1
+          %p.lead.top-lead
             Johan en Karin hebben hun 25-jarig jubileum! 
             %br
             Stuur hier je verhaal en foto in voor in het jubileum boek.
-          = image_tag "johan_karin.JPG", :class => "img-rounded"
+          = image_tag "johankarin.png", :class => "img-rounded"
 
 
     .page
       .page-container
         .container
           - if flash[:notice]
-            .alert.alert-info
-              %button.close{:data => { :dismiss => "alert" }} &times;
-              = flash[:notice]
+            .row
+              .span10.offset1
+                .alert.alert-info
+                  %button.close{:data => { :dismiss => "alert" }} &times;
+                  = flash[:notice]
           = yield
